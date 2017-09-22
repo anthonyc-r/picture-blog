@@ -1,0 +1,68 @@
+/*GENERAL CONTAINER STYLING*/
+#picblog {
+	/*nope*/
+	position: relative;
+	width: 800px;
+	margin: auto;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#picblog article {
+	position: relative; /*So I can use position abs on child p and h1*/
+	text-align: center;
+	width: 800px;
+	height: 600px;
+	margin: 10px 0px 10px 0px;
+
+	background-color: black;
+
+	border-radius: 10px;
+}
+
+/*BLOG IMAGE STYLING*/
+#picblog img {
+	max-width: 800px;
+	max-height: 600px;
+	height: 100%;
+
+	border-radius: inherit;
+}
+
+/*TITLE AND CONTENT STYLING*/
+#picblog p, #picblog h1 {
+	color: white;
+	padding: 10px;
+}
+#picblog h1 {
+	font-size: 200%;
+	padding: 10px;
+}
+#picblog h1 span {
+	font-size: 50%;
+}
+
+
+#picblog article div {
+	width: 100%;
+	position: absolute;
+
+	opacity: 0.75;
+	background-color: black;
+}
+#picblog .head {
+	top: 0px;
+	height: 10%;
+
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+#picblog .body {
+	bottom: 0px;
+	height: 20%;
+
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
