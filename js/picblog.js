@@ -45,7 +45,10 @@ PicBlog.prototype.configure = function() {
 	this.slides = $("#picblog").children("article");
 	this.div = $("#picblog");
 	this.numSlides = this.slides.length;
-	this.slideIndex = 0;
+	//Data source returned less than the page size
+	if (this.slideIndex >= this.numSlides) {
+		this.slideIndex = this.numSlides - 1;
+	}
 	//Hide all slides but not the current slide
 	this.slides.not(this.slides[this.slideIndex]).hide();
 	this.restyle();
@@ -207,10 +210,17 @@ PicBlog.prototype.changeBlogDataSource = function(num) {
 	}
 	if (this.slideIndex >= this.numSlides) {
 		this.pageIndex++;
+		this.slideIndex = 0;
 		this.fetchNewData();
 		return;
-	} else if (this.slideIndex < 0) {
+	} else if (this.slideIndex < 0 && this.pageIndex < 1) {
+		this.pageIndex = 0;
 		this.slideIndex = 0;
+		return;
+	} else if (this.slideIndex < 0) {
+		this.pageIndex--;
+		this.slideIndex = this.pageSize - 1;
+		this.fetchNewData();
 		return;
 	}
 	//Wrap numbers around so we just loop back
